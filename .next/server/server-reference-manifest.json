@@ -1,0 +1,54 @@
+{
+  "node": {
+    "7f4aa2035bd91e10a14d5da26820578a8c344a5a40": {
+      "workers": {
+        "app/(site)/[slug]/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%5B%227f4aa2035bd91e10a14d5da26820578a8c344a5a40%22%2C%22setPerspectiveCookie%22%5D%2C%5B%227f8618d72d5ecf0dca83e60180d76f1a8fc21f725b%22%2C%22revalidateSyncTags%22%5D%5D%5D%2C%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%5B%227f4830d94c8f134a655807ffca98e1409ad47c6724%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/(site)/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%5B%227f4aa2035bd91e10a14d5da26820578a8c344a5a40%22%2C%22setPerspectiveCookie%22%5D%2C%5B%227f8618d72d5ecf0dca83e60180d76f1a8fc21f725b%22%2C%22revalidateSyncTags%22%5D%5D%5D%2C%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%5B%227f4830d94c8f134a655807ffca98e1409ad47c6724%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/(site)/[slug]/page": "action-browser",
+        "app/(site)/page": "action-browser"
+      }
+    },
+    "7f8618d72d5ecf0dca83e60180d76f1a8fc21f725b": {
+      "workers": {
+        "app/(site)/[slug]/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%5B%227f4aa2035bd91e10a14d5da26820578a8c344a5a40%22%2C%22setPerspectiveCookie%22%5D%2C%5B%227f8618d72d5ecf0dca83e60180d76f1a8fc21f725b%22%2C%22revalidateSyncTags%22%5D%5D%5D%2C%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%5B%227f4830d94c8f134a655807ffca98e1409ad47c6724%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/(site)/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%5B%227f4aa2035bd91e10a14d5da26820578a8c344a5a40%22%2C%22setPerspectiveCookie%22%5D%2C%5B%227f8618d72d5ecf0dca83e60180d76f1a8fc21f725b%22%2C%22revalidateSyncTags%22%5D%5D%5D%2C%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%5B%227f4830d94c8f134a655807ffca98e1409ad47c6724%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/(site)/[slug]/page": "action-browser",
+        "app/(site)/page": "action-browser"
+      }
+    },
+    "7f4830d94c8f134a655807ffca98e1409ad47c6724": {
+      "workers": {
+        "app/(site)/[slug]/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%5B%227f4aa2035bd91e10a14d5da26820578a8c344a5a40%22%2C%22setPerspectiveCookie%22%5D%2C%5B%227f8618d72d5ecf0dca83e60180d76f1a8fc21f725b%22%2C%22revalidateSyncTags%22%5D%5D%5D%2C%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%5B%227f4830d94c8f134a655807ffca98e1409ad47c6724%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/(site)/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%5B%227f4aa2035bd91e10a14d5da26820578a8c344a5a40%22%2C%22setPerspectiveCookie%22%5D%2C%5B%227f8618d72d5ecf0dca83e60180d76f1a8fc21f725b%22%2C%22revalidateSyncTags%22%5D%5D%5D%2C%5B%22%2FUsers%2Fbellorin%2FDesktop%2Fnext%2Fintro-v3-app%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%5B%227f4830d94c8f134a655807ffca98e1409ad47c6724%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/(site)/[slug]/page": "action-browser",
+        "app/(site)/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "Oh8qm1uUtuq7b7PEDc76yE4zTTlaIMgSzO1vMHWfTAA="
+}
