@@ -11,7 +11,7 @@ export default function Header({ pages }: { pages: Page[] }) {
   const filteredPages = pages?.filter((page) => page.slug !== "get-in-touch") || [];
 
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between block-header-layout-desktop z-18 justify-center items-center w-full max-w-[1224px] py-8 px-4 grid grid-cols-[min-content_auto]">
       <Link href="/" className="text-lg font-bold">
         Livra Space
       </Link>

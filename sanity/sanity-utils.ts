@@ -85,8 +85,11 @@ const queries = {
 // Funciones específicas para cada consulta
 export const getProjects = () => fetchSanityData(queries.projects);
 export const getProject = (slug: string) => fetchSanityData(queries.project, { slug });
-export const getPage = (slug: string) => fetchSanityData(queries.page, { slug });
-
+export const getPage = async (slug: string) => {
+  const data = await fetchSanityData(queries.page, { slug });
+  console.log("getPage data:", data);
+  return data;
+};
 export const getPages = async () => {
   const pages = await fetchSanityData(queries.pages);
   return pages || []; // Asegúrate de que siempre regrese un array, aunque esté vacío
@@ -143,6 +146,8 @@ export const getForm = async (slug: string) => {
 export async function getServicePage() {
   return createClient(clientConfig).fetch(
     groq`*[_type == "servicePage"][0]{
+      title,
+      description,
       sections[] {
         title,
         description,
