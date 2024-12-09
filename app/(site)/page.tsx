@@ -8,35 +8,41 @@ export default async function Home() {
   ])
 
   const renderHeroBanner = () => (
-    <div className='relative w-full h-[500px] flex flex-col justify-center items-center text-center text-white'>
-      {heroBanner.mediaType === 'video' ? (
-        <video
-          autoPlay
-          loop
-          muted
-          className='absolute inset-0 w-full h-full object-cover'
-        >
-          <source src={heroBanner.mediaUrl} type='video/mp4' />
-          Your browser does not support the video tag.
-        </video>
-      ) : (
-        <div
-          className='absolute inset-0 w-full h-full bg-cover bg-center'
-          style={{ backgroundImage: `url(${heroBanner.mediaUrl})` }}
-        />
-      )}
-      <div className='relative z-10'>
-        <h1 className='text-7xl font-extrabold'>{heroBanner.title}</h1>
-        <p className='mt-3 text-xl'>{heroBanner.description}</p>
-        <a
-          href='/get-in-touch'
-          className='mt-4 inline-block rounded-full border-2 border-white px-6 py-2 text-xs font-medium uppercase transition hover:bg-white hover:text-black'
-        >
-          Get in Touch
-        </a>
-      </div>
-      <div className='absolute inset-0 bg-black opacity-40' />
-    </div>
+    <section id="hero-section" className="relative w-full h-auto py-4 px-0 grid grid-cols-1 grid-rows-[678px]">
+  <div className="absolute inset-0 z-10 overflow-hidden bg-transparent transition-all duration-300 ease-in-out">
+    {heroBanner.mediaType === 'video' ? (
+      <video
+        autoPlay
+        loop
+        muted
+        className="w-full h-full object-cover"
+      >
+        <source src={heroBanner.mediaUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    ) : (
+      <div
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-50"
+        style={{ backgroundImage: `url(${heroBanner.mediaUrl})` }}
+      />
+    )}
+  </div>
+
+  <div className="relative z-20 text-center text-white py-16 px-4">
+    <h1 className="text-5xl font-extrabold">{heroBanner.title}</h1>
+    <p className="mt-4 text-lg">{heroBanner.description}</p>
+    <a
+      href="/get-in-touch"
+      className="mt-4 inline-block rounded-full border-2 border-white px-6 py-3 text-sm font-medium uppercase transition-colors duration-300 hover:bg-white hover:text-black"
+    >
+      Get in Touch
+    </a>
+  </div>
+
+  {/* Overlay with a slight dark background */}
+  <div className="absolute inset-0 bg-black opacity-40 z-10" />
+</section>
+
   )
 
   const renderServiceSection = () => (
