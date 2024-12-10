@@ -19,33 +19,12 @@ const serviceSection = {
         name: "description",
         title: "Description",
         type: "text",
-        validation: (Rule) => Rule.required().max(300),
       },
       {
-        name: "services",
-        title: "services",
+        name: "items",
+        title: "Items",
         type: "array",
-        of: [
-          {
-            type: "object",
-            name: "service",
-            title: "service",
-            fields: [
-              {
-                name: "question",
-                title: "Question",
-                type: "string",
-                validation: (Rule) => Rule.required().min(5).max(100),
-              },
-              {
-                name: "answer",
-                title: "Answer",
-                type: "text",
-                validation: (Rule) => Rule.required().max(500),
-              },
-            ],
-          },
-        ],
+        of: [{ type: "string" }],
       },
       {
         name: "ctaButton",

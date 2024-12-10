@@ -65,6 +65,7 @@ const queries = {
     title,
     subtitle,
     description,
+    items,
     ctaButton {
       text,
       url

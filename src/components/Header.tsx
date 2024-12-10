@@ -32,10 +32,10 @@ export default function Header({ pages }: { pages: Page[] }) {
 
   return (
     <header
-      className={`w-full ${isScrolled ? "shadow-md" : ""} sticky top-0 bg-white z-10`}
+    className={`w-full ${isScrolled ? "shadow-md" : ""} sticky top-0 bg-white z-50`}
     >
       <div className="py-8 px-4 mx-auto max-w-[1224px] flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold">
+        <Link href="/" className="text-3xl font-bold">
           Livra Space
         </Link>
 
