@@ -1,5 +1,0 @@
-{
-  "/(studio)/admin/[[...index]]/page": "app/(studio)/admin/[[...index]]/page.js",
-  "/(site)/page": "app/(site)/page.js",
-  "/(site)/[slug]/page": "app/(site)/[slug]/page.js"
-}
