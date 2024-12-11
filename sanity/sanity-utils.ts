@@ -3,12 +3,44 @@ import clientConfig from "./config/client-config";
 
 const client = createClient(clientConfig);
 
-// Función genérica para manejar consultas
+interface HeroBanner {
+  mediaType: 'image' | 'video';
+  mediaUrl: string;
+  title: string;
+  description: string;
+}
+
+interface CtaButton {
+  text: string;
+  url: string;
+}
+
+interface FaqSection {
+  mediaUrl: string;
+  mediaType: 'image' | 'video';
+  title: string;
+  description: string;
+  faqs: Faq[];
+  ctaButton: CtaButton;
+}
+
+interface ServiceSection {
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaButton: CtaButton;
+  items: string[];
+}
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
 async function fetchSanityData<T>(query: string, params: Record<string, any> = {}): Promise<T> {
   return client.fetch(query, params);
 }
 
-// Consultas específicas
 const queries = {
   projects: groq`*[_type == "project"]{
     _id,
@@ -83,52 +115,89 @@ const queries = {
   }`,
 };
 
-// Funciones específicas para cada consulta
 export const getProjects = () => fetchSanityData(queries.projects);
 export const getProject = (slug: string) => fetchSanityData(queries.project, { slug });
-export const getPage = async (slug: string) => {
-  const data = await fetchSanityData(queries.page, { slug });
-  console.log("getPage data:", data);
-  return data;
-};
-export const getPages = async () => {
-  const pages = await fetchSanityData(queries.pages);
-  return pages || []; // Asegúrate de que siempre regrese un array, aunque esté vacío
+export async function getPage(slug: string): Promise<{ title: string; content: any[] }> {
+  const query = groq`*[_type == "page" && slug.current == $slug][0]{
+    title,
+    content
+  }`;
+
+  const result = await fetchSanityData<{ title: string; content: any[] }>(query, { slug });
+
+  if (result) {
+    return {
+      title: result.title || "Default Title",
+      content: result.content || [],
+    };
+  }
+
+  throw new Error(`Page with slug "${slug}" not found.`);
+}
+
+export const getPages = async (): Promise<{ _id: string; slug: string; title: string }[]> => {
+  const pages = await fetchSanityData<{ _id: string; slug: string; title: string }[]>(queries.pages);
+
+  return pages.map((page) => ({
+    _id: page._id,
+    slug: page.slug,
+    title: page.title,
+  }));
 };
 
-export const getHeroBanner = async () => {
-  return (
-    (await fetchSanityData(queries.heroBanner)) || {
-      title: "Default Title",
-      description: "Default description for Hero Banner",
-      mediaUrl: null,
-      mediaType: "image",
-    }
-  );
+export const getHeroBanner = async (): Promise<HeroBanner | null> => {
+  const result = await fetchSanityData<HeroBanner>(queries.heroBanner);
+
+  if (result) {
+    return {
+      mediaType: result.mediaType,
+      mediaUrl: result.mediaUrl,
+      title: result.title,
+      description: result.description,
+    };
+  }
+
+
+  return null;
 };
 
-export const getFaqSection = async () => {
-  return (
-    (await fetchSanityData(queries.faqSection)) || {
-      title: "Frequently Asked Questions",
-      description: "Here are some common questions we get asked.",
-      ctaButton: { text: "Contact Us", url: "/contact" },
-      mediaUrl: null,
-      mediaType: "image",
-      faqs: [],
-    }
-  );
+export const getFaqSection = async (): Promise<FaqSection | null> => {
+  const result = await fetchSanityData<FaqSection>(queries.faqSection);
+
+  if (result && "mediaUrl" in result && "mediaType" in result) {
+    return {
+      mediaUrl: result.mediaUrl || "",
+      mediaType: result.mediaType || "image",
+      title: result.title || "Default Title",
+      description: result.description || "Default Description",
+      ctaButton: {
+        text: result.ctaButton?.text || "",
+        url: result.ctaButton?.url || "",
+      },
+      faqs: result.faqs || [],
+    };
+  }
+
+  return null;
 };
 
-export const getServiceSection = async () => {
-  return (
-    (await fetchSanityData(queries.serviceSection)) || {
-      title: "Introduction",
-      subtitle: "We design, develop and grow e‑commerce stores for some of the best in the business.",
-      description: "",
-      ctaButton: { text: "VIEW ALL SERVICE", url: "/service" },
-    }
-  );
+export const getServiceSection = async (): Promise<ServiceSection | null> => {
+  const result = await fetchSanityData<ServiceSection>(queries.serviceSection);
+
+  if (result && "title" in result && "subtitle" in result && "ctaButton" in result) {
+    return {
+      title: result.title || "Default Title",
+      subtitle: result.subtitle || "Default Subtitle",
+      description: result.description || "Default Description",
+      ctaButton: {
+        text: result.ctaButton?.text || "Learn More",
+        url: result.ctaButton?.url || "#",
+      },
+      items: result.items || [],
+    };
+  }
+
+  return null;
 };
 
 export const getForm = async (slug: string) => {

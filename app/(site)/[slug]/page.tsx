@@ -2,12 +2,11 @@ import { getPage } from "@/sanity/sanity-utils";
 import ContactForm from "@/src/components/ContactForm";
 import { PortableText } from "@portabletext/react";
 
-type Props = {
-  params: { slug: string }
-};
+type Params = Promise<{ slug: string }>;
 
-export default async function Page({ params }: Props) {
-  const page = await getPage(params.slug);
+export default async function Page({ params }: { params: Params }) {
+  const resolvedParams = await params;
+  const page = await getPage(resolvedParams.slug);
 
   return (
     <div>
@@ -15,18 +14,13 @@ export default async function Page({ params }: Props) {
         {page.title}
       </h1>
       <div className="text-lg text-gray-700 mt-10">
-        {/* Renderizado del contenido */}
         {page.content.map((block: any, index: number) => {
           if (block._type === "block") {
-            // Renderizar contenido textual con PortableText
             return <PortableText key={index} value={[block]} />;
           }
-
           if (block._type === "form") {
-            // Renderizar el formulario si es un bloque de tipo "form"
             return <ContactForm key={index} />;
           }
-
           return null;
         })}
       </div>

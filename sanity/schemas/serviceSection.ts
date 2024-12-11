@@ -1,3 +1,5 @@
+import type { Rule } from "@sanity/types";
+
 const serviceSection = {
     name: "serviceSection",
     title: "Service Section",
@@ -7,13 +9,13 @@ const serviceSection = {
         name: "title",
         title: "Title",
         type: "string",
-        validation: (Rule) => Rule.required().min(5).max(100),
+        validation: (Rule: Rule) => Rule.required().min(5).max(100),
       },
       {
         name: "subtitle",
         title: "Subtitle",
         type: "string",
-        validation: (Rule) => Rule.required().min(5).max(100),
+        validation: (Rule: Rule) => Rule.required().min(5).max(100),
       },
       {
         name: "description",
@@ -35,13 +37,13 @@ const serviceSection = {
             name: "text",
             title: "Button Text",
             type: "string",
-            validation: (Rule) => Rule.required().min(2).max(30),
+            validation: (Rule: Rule) => Rule.required().min(2).max(30),
           },
           {
             name: "url",
             title: "Button URL",
             type: "url",
-            validation: (Rule) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
           },
         ],
       },

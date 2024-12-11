@@ -15,16 +15,14 @@ export default function Header({ pages }: { pages: Page[] }) {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        setIsScrolled(true); // Se aplica la sombra si el scroll es mayor a 0
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false); // Se elimina la sombra si el scroll es 0
+        setIsScrolled(false);
       }
     };
 
-    // Agregar el event listener al evento scroll
     window.addEventListener("scroll", handleScroll);
 
-    // Limpiar el event listener al desmontar el componente
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -35,7 +33,7 @@ export default function Header({ pages }: { pages: Page[] }) {
     className={`w-full ${isScrolled ? "shadow-md" : ""} sticky top-0 bg-white z-50`}
     >
       <div className="py-8 px-4 mx-auto max-w-[1224px] flex items-center justify-between">
-        <Link href="/" className="text-3xl font-bold">
+        <Link href="/" className="text-3xl font-bold cursor-pointer">
           Livra Space
         </Link>
 
@@ -49,14 +47,14 @@ export default function Header({ pages }: { pages: Page[] }) {
               {page.title}
             </Link>
           ))}
-          <a
+          <Link
             href="/get-in-touch"
             title="Get in Touch"
             rel="noopener noreferrer"
             className="border border-black text-black bg-white font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 hover:bg-black hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-100 transition"
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
       </div>
     </header>

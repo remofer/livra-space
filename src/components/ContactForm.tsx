@@ -6,7 +6,6 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí puedes manejar el envío del formulario, por ejemplo, usando un webhook
     console.log("Form submitted:", formData);
   };
 

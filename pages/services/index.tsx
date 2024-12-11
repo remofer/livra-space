@@ -2,6 +2,7 @@ import { PortableText } from "@portabletext/react";
 import { getPage, getPages, getServicePage } from "@/sanity/sanity-utils";
 import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
+import Image from "next/image";
 
 interface Section {
   title: string;
@@ -59,7 +60,7 @@ export default function ServicesPage({
               <p className="text-lg">{section.description}</p>
 
               {section.imageUrl && (
-                <img
+                <Image
                   src={section.imageUrl}
                   alt={section.title}
                   className="my-4 rounded-lg"

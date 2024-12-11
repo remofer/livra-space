@@ -15,6 +15,7 @@ interface ServiceSection {
   subtitle: string;
   description: string;
   ctaButton: CtaButton;
+  items: string[];
 }
 
 interface Faq {
@@ -31,8 +32,8 @@ interface FaqSection {
   ctaButton: CtaButton;
 }
 
-import { getHeroBanner, getServiceSection, getFaqSection } from '@/sanity/sanity-utils'
-import { useState, useEffect } from 'react';
+import { getHeroBanner, getServiceSection, getFaqSection } from '@/sanity/sanity-utils';
+import Link from 'next/link';
 
 export default async function Home() {
   const [heroBanner, serviceSection, faqSection]: [
@@ -66,12 +67,12 @@ export default async function Home() {
           <h1 className="text-8xl font-extrabold">{heroBanner?.title}</h1>
           <p className="text-lg">{heroBanner?.description}</p>
         </div>
-        <a
+        <Link
           href="/get-in-touch"
           className="row-start-3 col-start-2 self-end justify-self-end rounded-full border-2 border-white px-6 py-3 text-sm font-medium uppercase transition-colors duration-300 hover:bg-white hover:text-black"
         >
           Get in Touch
-        </a>
+        </Link>
       </div>
 
       <div className="absolute inset-0 bg-black opacity-40 z-10" />
@@ -80,7 +81,7 @@ export default async function Home() {
 
   const renderServiceSection = () => (
     <section
-      className="service-section py-20 px-20 text-center grid grid-cols-[1fr_1fr_1fr_1fr] gap-4" // 4 columnas con un gap de 4
+      className="service-section py-20 px-20 text-center grid grid-cols-[1fr_1fr_1fr_1fr] gap-4"
     >
       <h2 className="text-[24px] font-bold text-left z-10 col-span-2 font-outfit">
         {serviceSection?.title}
@@ -96,14 +97,14 @@ export default async function Home() {
         ))}
       </ul>
   
-      <a
-        href={serviceSection?.ctaButton.url}
+      <Link
+        href={serviceSection?.ctaButton.url || "#"}
         className="mt-8 inline-block transition-colors duration-300 hover:bg-black hover:text-white text-sm font-medium uppercase rounded-full border-2 border-black text-black py-3 px-6 col-start-5 text-right"
       >
         {serviceSection?.ctaButton.text}
-      </a>
+      </Link>
     </section>
-  )
+  );
 
   const renderFaqSection = () => (
     <div className="relative w-full h-auto py-4 px-0 grid grid-cols-1 grid-rows-[678px]">
@@ -127,8 +128,8 @@ export default async function Home() {
         <h2 className="text-4xl font-extrabold">{faqSection?.title}</h2>
         <p className="mt-4 text-xl">{faqSection?.description}</p>
   
-        {faqSection?.faqs?.length > 0 ? (
-          faqSection?.faqs.map((faq, index) => (
+        {faqSection?.faqs?.length ? (
+          faqSection.faqs.map((faq, index) => (
             <div key={index} className="faq-item mb-6">
               <h3 className="text-xl font-semibold">{faq.question}</h3>
               <p className="mt-2 text-lg">{faq.answer}</p>
@@ -138,12 +139,12 @@ export default async function Home() {
           <p>No FAQs available.</p>
         )}
         
-        <a
-          href={faqSection?.ctaButton.url}
+        <Link
+          href={faqSection?.ctaButton.url || "#"}
           className="row-start-3 col-start-2 self-end justify-self-end rounded-full border-2 border-white px-6 py-3 text-sm font-medium uppercase transition-colors duration-300 hover:bg-white hover:text-black"
-        >
+          >
           {faqSection?.ctaButton.text}
-        </a>
+        </Link>
       </div>
   
       <div className="absolute inset-0 bg-black opacity-40 z-10" />

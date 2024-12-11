@@ -1,3 +1,5 @@
+import type { Rule } from "@sanity/types";
+
 const faqSection = {
     name: "faqSection",
     title: "FAQ Section",
@@ -7,13 +9,13 @@ const faqSection = {
         name: "title",
         title: "Title",
         type: "string",
-        validation: (Rule) => Rule.required().min(5).max(50),
+        validation: (Rule: Rule) => Rule.required().min(5).max(50),
       },
       {
         name: "description",
         title: "Description",
         type: "text",
-        validation: (Rule) => Rule.required().max(200),
+        validation: (Rule: Rule) => Rule.required().min(5).max(200),
       },
       {
         name: "ctaButton",
@@ -24,16 +26,16 @@ const faqSection = {
             name: "url",
             title: "Button URL",
             type: "string",
-            validation: (Rule) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
           },
           {
             name: "text",
             title: "Button Text",
             type: "string",
-            validation: (Rule) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
           },
         ],
-        validation: (Rule) => Rule.required(),
+        validation: (Rule: Rule) => Rule.required(),
       },
       {
         name: "media",
@@ -50,16 +52,16 @@ const faqSection = {
                 { title: "Video", value: "video" },
               ],
             },
-            validation: (Rule) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
           },
           {
             name: "file",
             title: "Upload File",
             type: "file",
             options: {
-              accept: "image/*,video/*", // Permite imágenes y videos
+              accept: "image/*,video/*",
             },
-            validation: (Rule) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
           },
         ],
       },

@@ -1,7 +1,13 @@
 import '../globals.css';
 import { getPages } from '@/sanity/sanity-utils';
-import Footer from '@/src/components/Footer'
+import Footer from '@/src/components/Footer';
 import Header from '@/src/components/Header';
+
+interface Page {
+  _id: string;
+  slug: string;
+  title: string;
+}
 
 export const metadata = {
   title: 'Livra Space',
@@ -13,15 +19,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pages = await getPages();
+  const pages: Page[] = (await getPages()) || [];
 
   return (
-    <html lang='en'>
-      <body className='max-w-3xl mx-auto py-10'>
+    <>
+      <div className='min-h-screen flex flex-col'>
         <Header pages={pages} />
-        <main className=''>{children}</main>
+        <main className="flex-grow">{children}</main>
         <Footer />
-      </body>
-    </html>
+      </div>
+    </>
   );
 }
