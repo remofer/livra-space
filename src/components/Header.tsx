@@ -6,6 +6,7 @@ interface Page {
   _id: string;
   slug: string;
   title: string;
+  metaTitle: string;
 }
 
 export default function Header({ pages }: { pages: Page[] }) {
@@ -32,7 +33,7 @@ export default function Header({ pages }: { pages: Page[] }) {
     <header
     className={`w-full ${isScrolled ? "shadow-md" : ""} sticky top-0 bg-white z-50`}
     >
-      <div className="py-8 px-4 mx-auto max-w-[1224px] flex items-center justify-between">
+      <div className="py-8 px-4 flex items-center justify-between">
         <Link href="/" className="text-3xl font-bold cursor-pointer">
           Livra Space
         </Link>
@@ -44,7 +45,7 @@ export default function Header({ pages }: { pages: Page[] }) {
               href={`/${page.slug}`}
               className="hover:underline underline-offset-8"
             >
-              {page.title}
+              {page.metaTitle}
             </Link>
           ))}
           <Link

@@ -46,36 +46,40 @@ export default function ServicesPage({
   return (
     <>
       <Header pages={pages} />
-      <main>
-        <h1 className="text-4xl font-bold">{title}</h1>
+      <main className="bg-gray-100">
+        <div className="flex flex-col gap-8 p-8">
+          <div className="flex gap-10">
+            <h1 className="text-3xl font-outfit font-bold">{title}</h1>
 
-        <div className="prose">
-          <PortableText value={content} />
-        </div>
+            <div className="font-outfit text-2xl w-5/12 prose">
+              <PortableText value={content} />
+            </div>
+          </div>
 
-        <div className="space-y-8">
-          {sections.map((section, index) => (
-            <section key={index} className="section">
-              <h2 className="text-3xl font-semibold">{section.title}</h2>
-              <p className="text-lg">{section.description}</p>
+          <div className="space-y-8">
+            {sections.map((section, index) => (
+              <section key={index} className="section">
+                <h2 className="font-semibold text-[102px]">{section.title}</h2>
+                <p className="text-lg">{section.description}</p>
 
-              {section.imageUrl && (
-                <Image
-                  src={section.imageUrl}
-                  alt={section.title}
-                  className="my-4 rounded-lg"
-                />
-              )}
+                {section.imageUrl && (
+                  <Image
+                    src={section.imageUrl}
+                    alt={section.title}
+                    className="my-4 rounded-lg"
+                  />
+                )}
 
-              {section.items?.length && (
-                <ul className="list-disc list-inside">
-                  {section.items.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ))}
+                {section.items?.length && (
+                  <ul className="list-disc list-inside">
+                    {section.items.map((item, i) => (
+                      <li className="list-none" key={i}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
+          </div>
         </div>
       </main>
       <Footer />

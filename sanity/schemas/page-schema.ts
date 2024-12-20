@@ -1,8 +1,17 @@
+import { Rule } from "sanity";
+
 const page = {
   name: "page",
   title: "Pages",
   type: "document",
   fields: [
+    {
+      name: "metaTitle",
+      title: "Meta Title",
+      type: "string",
+      description: "",
+      validation: (Rule: Rule) => Rule.max(60),
+    },
     {
       name: "title",
       title: "Title",

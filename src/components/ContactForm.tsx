@@ -52,7 +52,7 @@ export default function FormComponent() {
           onClick={() => setActiveForm("projectInquiry")}
           className={`${
             activeForm === "projectInquiry" ? "bg-blue-800" : "bg-blue-700"
-          } text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
+          } text-white w-full hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
         >
           Project Inquiry
         </button>
@@ -60,7 +60,7 @@ export default function FormComponent() {
           onClick={() => setActiveForm("getInTouch")}
           className={`${
             activeForm === "getInTouch" ? "bg-green-800" : "bg-green-700"
-          } text-white hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
+          } text-white w-full hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
         >
           Get in Touch
         </button>
@@ -156,30 +156,52 @@ export default function FormComponent() {
                   </label>
                 </div>
               </div>
+              <div className="col-span-2">
+                <div className="relative z-0 w-full group">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="floating_last_name"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    required
+                  />
+                  <label
+                    htmlFor="floating_last_name"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Current Ecommerce Platform*
+                  </label>
+                </div>
+              </div>
 
               <div className="col-span-2">
-                <textarea
-                  name="projectDescription"
-                  id="floating_project_description"
-                  className="block py-4 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer h-32"
-                  placeholder=" "
-                  value={formData.projectDescription}
-                  onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
-                  required
-                />
-                <label
-                  htmlFor="floating_project_description"
-                  className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Project Description*
-                </label>
+                <div className="relative z-0 w-full group">
+                  <textarea
+                    name="projectDescription"
+                    id="floating_project_description"
+                    className="block py-4 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer h-32"
+                    placeholder=" "
+                    value={formData.projectDescription}
+                    onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
+                    required
+                  />
+                  <label
+                    htmlFor="floating_project_description"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Project Description*
+                  </label>
+                </div>
               </div>
             </>
           )}
 
           {activeForm === "getInTouch" && (
             <>
-              <div className="relative z-0 w-full group">
+              <div className="relative z-0 w-full group col-span-2">
                 <input
                   type="email"
                   name="workEmail"
@@ -197,7 +219,7 @@ export default function FormComponent() {
                   Email*
                 </label>
               </div>
-              <div className="col-span-2">
+              <div className="relative z-0 w-full group col-span-2">
                 <textarea
                   name="message"
                   id="floating_message"

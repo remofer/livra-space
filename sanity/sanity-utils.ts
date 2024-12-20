@@ -64,13 +64,15 @@ const queries = {
     _id,
     _createdAt,
     title,
-    "slug": slug.current
+    "slug": slug.current,
+    metaTitle
   }`,
   page: groq`*[_type == "page" && slug.current == $slug][0]{
     _id,
     _createdAt,
     title,
     "slug": slug.current,
+    metaTitle,
     content
   }`,
   heroBanner: groq`*[_type == "heroBanner"][0]{
@@ -135,13 +137,14 @@ export async function getPage(slug: string): Promise<{ title: string; content: a
   throw new Error(`Page with slug "${slug}" not found.`);
 }
 
-export const getPages = async (): Promise<{ _id: string; slug: string; title: string }[]> => {
-  const pages = await fetchSanityData<{ _id: string; slug: string; title: string }[]>(queries.pages);
+export const getPages = async (): Promise<{ _id: string; slug: string; title: string; metaTitle: string }[]> => {
+  const pages = await fetchSanityData<{ _id: string; slug: string; title: string; metaTitle: string }[]>(queries.pages);
 
   return pages.map((page) => ({
     _id: page._id,
     slug: page.slug,
     title: page.title,
+    metaTitle: page.metaTitle || page.title,
   }));
 };
 
@@ -170,10 +173,6 @@ export const getFaqSection = async (): Promise<FaqSection | null> => {
       mediaType: result.mediaType || "image",
       title: result.title || "Default Title",
       description: result.description || "Default Description",
-      ctaButton: {
-        text: result.ctaButton?.text || "",
-        url: result.ctaButton?.url || "",
-      },
       faqs: result.faqs || [],
     };
   }

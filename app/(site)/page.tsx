@@ -124,9 +124,9 @@ export default async function Home() {
           style={{ backgroundImage: `url(${faqSection?.mediaUrl})` }}
         />
       )}
-      <div className="relative z-10 grid grid-rows-[auto_auto_1fr] grid-cols-[1fr_auto] h-[678px] text-white py-16 px-16">
-        <h2 className="text-4xl font-extrabold">{faqSection?.title}</h2>
-        <p className="mt-4 text-xl">{faqSection?.description}</p>
+      <div className="relative z-20 grid grid-rows-[auto_auto_1fr] grid-cols-[1fr_auto] h-[678px] py-16 px-16">
+        <h2 className="text-white text-4xl font-extrabold">{faqSection?.title}</h2>
+        <p className="mt-4 text-white text-xl">{faqSection?.description}</p>
   
         {faqSection?.faqs?.length ? (
           faqSection.faqs.map((faq, index) => (
@@ -136,20 +136,13 @@ export default async function Home() {
             </div>
           ))
         ) : (
-          <p>No FAQs available.</p>
+          <p></p>
         )}
-        
-        <Link
-          href={faqSection?.ctaButton.url || "#"}
-          className="row-start-3 col-start-2 self-end justify-self-end rounded-full border-2 border-white px-6 py-3 text-sm font-medium uppercase transition-colors duration-300 hover:bg-white hover:text-black"
-          >
-          {faqSection?.ctaButton.text}
-        </Link>
       </div>
   
       <div className="absolute inset-0 bg-black opacity-40 z-10" />
     </div>
-  );  
+  );
 
   return (
     <div>
